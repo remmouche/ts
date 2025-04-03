@@ -1,0 +1,12 @@
+npm install -g typescript
+npm install -g ts-node
+
+
+Annotations:
+Annotations are used to specify the data type of a variable, parameter, function return value, and other types of values.
+Annotations help developers catch erros early in development by allowing them to specify what types of values can be assigned tp a given variables or passed or passed as an argument to a function. 
+
+Type Inference
+Type inference is a feature in TypeScript that allows the compiler to automatically determine the type of a variable based on its value. In other words, if you declare a variable without explicitly specifying its type, TypeScript will try to infer the type based n the value you assign to it.
+
+
