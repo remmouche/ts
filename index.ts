@@ -14,16 +14,24 @@ let isHard= true;
 
 console.log(tech, favNumber, isHard);
 // ERROR
-// tech = 7;
+//tech = 7;
 // favNumber = false;
 // isHard = 'true'
 
-// Any Type
+// any Type
 // The any type is a type that allows you to assign any value to a variable.
 let anyType: any = 'TypeScript';
 anyType = 7;
 anyType = false;
 console.log(anyType);
+
+let color: any = 'crimson';
+color = 7;
+color = false;
+color();
+color.toUpperCase();
+console.log(color);
+
 
 //Function Parameter Annotations
 // Function parameter annotations are used to specify the type of a function parameter. 
