@@ -25,12 +25,12 @@ anyType = 7;
 anyType = false;
 console.log(anyType);
 
-let color: any = 'crimson';
-color = 7;
-color = false;
-color();
-color.toUpperCase();
-console.log(color);
+let color1: any = 'crimson';
+color1 = 7;
+color1 = false;
+color1();
+color1.toUpperCase();
+console.log(color1);
 
 
 //Function Parameter Annotations
