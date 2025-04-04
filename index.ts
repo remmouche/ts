@@ -61,7 +61,14 @@ console.log(add1(2));
 const greet = (name: string = 'anonymous'): string => `Salam Alikoum ${name}`
 let res1 = greet('Samy');
 
-
+//Void Functions
+// Void functions are functions that do not return a value. Vois is a type that represnets the absence of a any value. It is often used as the return type for functions thst do not return a value.
+function print(message: string): void {
+    console.log(message);
+    //ERROR
+    //return 'mesage'
+}
+print('Hello, world!');
 
 //Function Overloading
 // Function overloading is a feature in TypeScript that allows you to create multiple functions with the same name but different parameter types.
@@ -72,6 +79,13 @@ function add2(num1: any, num2: any): any {
 }
 console.log(add2(2, 3));
 console.log(add2('2', '3'));
+
+//Never keyword
+// The never keyword is a type that represents the type of values that never occur. It is often used as the return type for functions that never return a value.
+function error(message: string): never {
+    throw new Error(message);
+}   
+error('error');
 
 //Object Type Annotations
 // Object type annotations are used to specify the type of an object.
