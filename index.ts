@@ -35,7 +35,6 @@ console.log(color1);
 
 //Function Parameter Annotations
 // Function parameter annotations are used to specify the type of a function parameter. 
-
 function add(num1: number, num2: number): number {
     return num1 + num2;
 }
@@ -61,6 +60,18 @@ console.log(add1(2));
 
 const greet = (name: string = 'anonymous'): string => `Salam Alikoum ${name}`
 let res1 = greet('Samy');
+
+
+
+//Function Overloading
+// Function overloading is a feature in TypeScript that allows you to create multiple functions with the same name but different parameter types.
+function add2(num1: number, num2: number): number;
+function add2(num1: string, num2: string): string;
+function add2(num1: any, num2: any): any {
+    return num1 + num2;
+}
+console.log(add2(2, 3));
+console.log(add2('2', '3'));
 
 //Object Type Annotations
 // Object type annotations are used to specify the type of an object.
