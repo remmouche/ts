@@ -70,12 +70,25 @@ function print(message: string): void {
 }
 print('Hello, world!');
 
+//never keyword
+// The never keyword is a type that represents the type of values that never occur. It is often used as the return type for functions that never return a value.
+function error2(message: string): never {
+    throw new Error(message);
+}   
+error2('error');
+
+
 //Function Overloading
 // Function overloading is a feature in TypeScript that allows you to create multiple functions with the same name but different parameter types.
 function add2(num1: number, num2: number): number;
 function add2(num1: string, num2: string): string;
-function add2(num1: any, num2: any): any {
-    return num1 + num2;
+function add2(num1: number | string, num2: number | string): number | string {
+
+    if (typeof num1 === 'number' && typeof num2 === 'number') {
+        return num1 + num2;
+    } else {
+        return num1.toString() + num2.toString();
+    }
 }
 console.log(add2(2, 3));
 console.log(add2('2', '3'));
@@ -87,15 +100,29 @@ function error(message: string): never {
 }   
 error('error');
 
+//Array Type
+//New Syntax With []
+// Array type is a type that represents an array of values of a specific type.
+let arr1: number[] = [1, 2, 3];
+console.log(arr1);
+
+//Old Syntax With <>
+let array2: Array<string> = [];
+array2= ['apple', 'banana', 'orange'];
+console.log(array2);
+
+//Multi Dimensional Array
+// Multi-dimensional arrays are arrays of arrays.
+let arr3: number[][] = [[1, 2, 3], [4, 5, 6]];
+let array4: number [][][] = [[[1, 2, 3]], [[4, 5, 6]]];
+console.log(arr3);
+
+
 //Object Type Annotations
 // Object type annotations are used to specify the type of an object.
 let person: { name: string, age: number } = { name: 'Samy', age: 24 };
 console.log(person);
 
-//Array Type Annotations
-// Array type annotations are used to specify the type of an array. 
-let arr: string[] = ['apple', 'banana', 'orange'];
-console.log(arr);
 
 //Tuple Type Annotations
 // Tuple type annotations are used to specify the type of a tuple.
