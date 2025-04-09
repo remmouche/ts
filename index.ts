@@ -261,7 +261,7 @@ console.log(todayWeather); //rainy
 
 
 //OOP Classes
-//Classes are a way to define a blueprint for creating objects. Classes allow you to define properties and methods that are shared by all instances of the class.
+//Classes are a way to define a blueprint for creating objects. Classes allow you to define properties and methods that are shared by all instances of the class. You can annotate class properties with a type. this allows you to define the daata type of the property and ensure that it is always consistent across all instances of the class.
 
 class Person {
     name: string;
@@ -270,4 +270,101 @@ class Person {
         this.name = name;
         this.age = age;
     }       
+}
+
+
+//Access Modifiers
+//In TypeScript, access modifiers are used to control the accessibility of class members (properties and methods). Access modifiers determine the ways in which class members can be accessed from within and outside the class .There are three access modifiers in TypeScript: public, private, and protected.
+
+//Public: Memebers marked as public can be accessed from anywhere, both inside and outside the class.
+//Private: Members marked as private can only be accessed from within the class they are defined in.
+//Protected: Members marked as protected can be accessed from within the class they are defined in, as well as any subclasses of that class(subclasses that extend the class).
+
+class Humain{
+    public firstName: string
+    private lastName: string
+    protected age: number
+
+    constructor(firstName: string, lastName: string, age: number){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age
+    }
+
+    getLastName(){
+        return this.lastName
+    }
+
+    // getAge(){
+    //     return this.age
+    // }
+}
+
+const samy = new Humain('Samy', 'Remmouche', 24);
+console.log(samy.firstName);
+console.log(samy.getLastName);
+console.log(samy.lastName)
+console.log(samy.age)
+
+
+class Person1 extends Humain{
+    constructor(firstName: string, lastName: string, age: number){
+        super(firstName, lastName, age)
+    }
+
+    getAge(){
+        return this.age   
+    }
+}
+
+const mohamed = new Person1('Mohamed', 'Remmouche', 24);
+console.log(mohamed.firstName);
+console.log(mohamed.getLastName);
+console.log(mohamed.lastName)
+console.log(mohamed.getAge)
+
+
+//Getters and Setters
+//Getters and Setters are used to access and modify class properties. Getters and setters alllow you to define a property in a class that looks like a simple variable from the outside but internally has additional logic for getting adn setting the value.
+
+class Person2 {
+    private _name: string;
+    constructor(name: string) {
+        this._name = name;
+    }
+    get name(): string {
+        return this._name;
+    }
+    set name(value: string) {
+        this._name = value;
+    }
+}
+
+const me = new Person2('Samy');
+console.log(me.name); // Samy
+me.name = 'Mohamed';
+console.log(me.name); // Mohamed
+
+
+//Interface
+//Interface is a way to define a CONTRACT for the shape of an object. It specifies the properties and their types that an object must have. Interfaces are a powerful tool for enforcing a certain structire in your code. While interfaces are commonly used to define the structure of objects, they are not limited  to just objects. Interfaces in TypeScript can also be used to DESCRIBE THE SHAPE of functions and classes.
+
+
+//Interface for a function
+interface MathOperation {(x: number, y: number): number;}
+
+//Usage
+const add5: MathOperation = (x, y) => x + y;
+const multiply5: MathOperation = (x, y) => x * y;
+const subtract5: MathOperation = (x, y) => x - y;
+
+console.log(add5(2, 3)); // 5
+console.log(multiply5(2, 3)); // 6
+console.log(subtract5(2, 3)); // 1
+
+
+interface Person3 {
+    name: string;
+    age: number;
+    role: string;
 }
