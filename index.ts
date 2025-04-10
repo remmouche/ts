@@ -507,3 +507,58 @@ return { key:key, value:value };
   const numberObject = { a: 1, b: 2, c: 3 };
   const { key, value } = getRandomKeyValuePair(numberObject);
   console.log(`Random key: ${key}, Random value: ${value}`);
+
+  //example3
+  function filterArray<T>(arr: T[], condition: (item: T) => boolean): T[]{
+  return arr.filter(item => condition(item))
+}
+
+const arrNumbers = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+
+function oddNumber(item: number){
+    return item % 2 !== 0
+}
+
+const oddNumbers = filterArray<number>(arrNumbers, oddNumber)
+console.log(oddNumbers)
+
+const stringArr = ['apple', 'banana','orange', 'fig', 'grape', 'kiwi']
+const shortWords = filterArray<string>(stringArr, word => word.length < 5)
+
+console.log(shortWords)
+
+//Generics with multiple types
+function reversePair<T, U>(value1: T, value2: U) : [U,T]{
+    return [value2, value1];
+}
+
+const reversedPair = reversePair<string, number>('apple', 2);
+console.log(reversedPair);
+
+//Generics with class
+class Box<T> {
+    private content : T;
+
+    constructor(initialContent: T){
+        this.content = initialContent
+    }
+
+    getContent(){
+        return this.content
+    }
+
+    setContent(newContent: T){
+        this.content = newContent
+    }
+}
+
+const box1 = new Box<string>('apple');
+console.log(box1.getContent());
+box1.setContent('banana');
+console.log(box1.getContent());
+
+const box2 = new Box<number>(7);
+console.log(box2.getContent());
+box2.setContent(8);
+console.log(box2.getContent());
+
