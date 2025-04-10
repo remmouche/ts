@@ -464,3 +464,46 @@ const movie1: MovieGenra = {
 function identity<T>(value: T): T {
     return value;
 }
+
+//example1
+//Regular function before refactoring
+const printString = (x: string)=>console.log(x);
+const printNumber = (x: number)=>console.log(x);
+const printBoolean = (x: boolean)=>console.log(x);
+
+printString('Hello');
+printNumber(3);
+printBoolean(true); 
+
+function printInfo<T>(x: T): T {
+    return x
+  }
+//refactoring with generics
+function printValue<T>(x: T) {
+    console.log(x);
+  }
+  
+  printValue<string>('Hello');
+  printValue<number>(3);
+  printValue<boolean>(true);
+
+
+  //example2
+  function getRandomKeyValuePair<T>(obj: {[key: string]: T}):{
+    key: string;
+    value: T;
+  }{
+const keys = Object.keys(obj);
+const randomIndex = Math.floor(Math.random() * keys.length);
+const key = keys[randomIndex];
+const value = obj[key];
+return { key:key, value:value };
+  }
+
+  const stringObject = { a: 'apple', b: 'banana', c: 'cherry' };
+  const randomStringPair = getRandomKeyValuePair(stringObject);
+  console.log(randomStringPair);    
+
+  const numberObject = { a: 1, b: 2, c: 3 };
+  const { key, value } = getRandomKeyValuePair(numberObject);
+  console.log(`Random key: ${key}, Random value: ${value}`);
