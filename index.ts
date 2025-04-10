@@ -349,6 +349,19 @@ console.log(me.name); // Mohamed
 //Interface
 //Interface is a way to define a CONTRACT for the shape of an object. It specifies the properties and their types that an object must have. Interfaces are a powerful tool for enforcing a certain structire in your code. While interfaces are commonly used to define the structure of objects, they are not limited  to just objects. Interfaces in TypeScript can also be used to DESCRIBE THE SHAPE of functions and classes.
 
+interface Person3 {
+    name: string;
+    age: number;
+    role: string;
+}
+
+const person4: Person3 = {
+    name: 'Samy',
+    age: 24,
+    role: 'Developer'
+}
+
+console.log(person4);
 
 //Interface for a function
 interface MathOperation {(x: number, y: number): number;}
@@ -362,9 +375,92 @@ console.log(add5(2, 3)); // 5
 console.log(multiply5(2, 3)); // 6
 console.log(subtract5(2, 3)); // 1
 
+//example2
+interface Person11{firstName: string, lastName: string, greeting(): void}
+function greet1(person: Person11) {
+    console.log(`Hello, ${person.firstName} ${person.lastName}!`);
+    person.greeting();
+}
 
-interface Person3 {
+const samishou: Person11={
+    firstName: 'Samy',
+    lastName: 'Remmouche',
+    greeting(){console.log('Hello!')}
+}
+greet1(samishou)
+
+//Interface for a class
+interface Vehicle{
+    start():void;
+    stop():void;
+}
+
+//Class implementing the interface
+class Car implements Vehicle{
+    start(){
+        console.log('Car started');
+    }
+    stop(){
+        console.log('Car stopped');
+    }
+}
+
+//Usage
+const myCar = new Car();
+myCar.start(); // Car started
+myCar.stop(); // Car stopped
+
+
+
+//Declatation merging
+//Once an interface is declared, it cannot be directly modified. However, TypeScript allows what is informally reffered to as "declaration merging" or "interface extension", which is often misconstrued as "re-opening."
+//Declaration merging in TypeScript refers to the ability to extend or augment an existing declaration, including interfaces. this can be useful when you want to add new properties or methods to an existing interface without modifying the original declaration.
+
+interface Person4 {
     name: string;
     age: number;
     role: string;
+}
+
+interface Person4 {
+    email: string;
+    phone: number; 
+}
+
+const person5: Person4 = {
+    name: 'Samy',
+    age: 24,
+    role: 'Developer',
+    email: 'BfD9S@example.com',
+    phone: 123456789
+}
+
+//Interface Inheritance
+//Interfaces can also inherit from other interfaces using the extends keyword. This allows you to create a new interface that extends an existing interface, inheriting its properties and methods.     
+
+
+interface MovieDetails {
+    readonly name: string;
+    ratings: number;
+    printMovieInfo(): string | number
+}
+
+interface MovieGenra extends MovieDetails {
+    genra: string;
+}
+
+const movie1: MovieGenra = {
+    name: 'The Shawshank Redemption',
+    ratings: 9.3,
+    genra: 'Drama',
+    printMovieInfo()  {
+        return `Movie Nmae:${this.name} Price: ${this.price} Ratings: ${this.ratings}`;
+    }
+}
+
+//Generics
+//In TypeScript, generics allow you to create reusable components that can work with a variety of types. Generics make it possible for you to define functions, classes, and interfaces that can work with different data types without having to duplicate code.
+
+function identity<T>(value: T): T {
+    return value;
 }
