@@ -562,3 +562,56 @@ console.log(box2.getContent());
 box2.setContent(8);
 console.log(box2.getContent());
 
+
+//Type Narrowing
+//Type narrowing is the process of refining a varible's type within a conditional block of code. this allows you to write more precide and type -safe code. TypeScript provides several mechanisms for narrowing types, including type guards, type instanceof operator, and intersection types.
+
+//Type guards
+//Type guards are mechanisms that help TypeScript understand and narrow the types more precisely. One common type guard is the typeof operator.
+type MyType = string | number
+function printInfo7(info: MyType): void{
+    if(typeof info === 'string'){
+        console.log(`String: ${info.toUpperCase()}`);
+    }else if(typeof info === 'number'){
+        console.log(`Number: ${info.toFixed(2)}`);
+    }
+}
+
+printInfo7('Salam Alikoum'); //SALAM ALIKOUM
+printInfo7(3.14159); //3.14
+
+//Type instanceof operator
+//The instanceof operator is another type guard in TypeScript that allows you to check whether an object is an instance of a particular class or constructor function.
+
+class Person25 {
+    name: string;
+    constructor(name: string) {
+      this.name = name;
+    }
+  }
+  
+  class Employee25 extends Person25 {
+    jobTitle: string;
+    constructor(name: string, jobTitle: string) {
+      super(name);
+      this.jobTitle = jobTitle;
+    }
+  }
+  
+  function printInfo8(info: Person25): void {
+    if (info instanceof Employee25) {
+      console.log(`Employee: ${info.name} - ${info.jobTitle}`);
+    } else if (info instanceof Person25) {
+      console.log(`Person: ${info.name}`);
+    }
+  }
+  
+  const person27 = new Person25('Samy');
+  const employee27 = new Employee25('Samy', 'Developer');
+  
+  printInfo8(person27); // Person: Samy
+  printInfo8(employee); // Employee: Samy - Developer  
+
+  //Intersection Types
+  //Intersection types are used to combine multiple types into a single type that is a combination of those types. Intersection types are denoted by the & operator.
+  type MyType1 = string & number
