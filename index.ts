@@ -598,7 +598,7 @@ class Person25 {
     }
   }
   
-  function printInfo8(info: Person25): void {
+  function printInfo8(info: Person25 | Employee25): void {
     if (info instanceof Employee25) {
       console.log(`Employee: ${info.name} - ${info.jobTitle}`);
     } else if (info instanceof Person25) {
