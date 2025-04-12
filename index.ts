@@ -614,4 +614,25 @@ class Person25 {
 
   //Intersection Types
   //Intersection types are used to combine multiple types into a single type that is a combination of those types. Intersection types are denoted by the & operator.
-  type MyType1 = string & number
+  
+  type Employee30 = {
+    id: number;
+    name: string;
+  };
+
+  type Manager = {
+    department: string;
+    role: string;
+  };
+
+  type ManagerWithEmployee = Employee30 & Manager;
+
+  const managerWithEmployee: ManagerWithEmployee = {
+    id: 123,
+    name: 'John Doe',
+    department: 'Sales',
+    role: 'Team Leader',
+  };
+
+  console.log(managerWithEmployee.name); // Output: 'John Doe'
+
